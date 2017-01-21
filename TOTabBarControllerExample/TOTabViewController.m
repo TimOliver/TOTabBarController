@@ -42,7 +42,7 @@
     
     self.label.center = (CGPoint){CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)};
     
-    self.view.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
 }
 
 @end

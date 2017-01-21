@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
 @property (nonatomic, assign) NSInteger selectedIndex;
 
+@property (nonatomic, strong) UIColor *separatorColor;
+
 @property (nonatomic, strong, nullable) void (^itemTappedHandler)(NSInteger index, UITabBarItem *item);
 
 @end

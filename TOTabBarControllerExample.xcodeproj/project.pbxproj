@@ -15,6 +15,7 @@
 		2250A77C1E3318E300B8773C /* TOTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A77B1E3318E300B8773C /* TOTabBarController.m */; };
 		2250A77F1E331A2500B8773C /* TOTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A77E1E331A2500B8773C /* TOTabBar.m */; };
 		2250A7851E33212C00B8773C /* TOTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A7841E33212C00B8773C /* TOTabViewController.m */; };
+		22C127341E33B20700033116 /* TOTabBarItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C127331E33B20700033116 /* TOTabBarItemView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +32,8 @@
 		2250A77E1E331A2500B8773C /* TOTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOTabBar.m; sourceTree = "<group>"; };
 		2250A7831E33212C00B8773C /* TOTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOTabViewController.h; path = TOTabBarControllerExample/TOTabViewController.h; sourceTree = SOURCE_ROOT; };
 		2250A7841E33212C00B8773C /* TOTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TOTabViewController.m; path = TOTabBarControllerExample/TOTabViewController.m; sourceTree = SOURCE_ROOT; };
-		22C1272F1E3351BA00033116 /* RevealServer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RevealServer.framework; sourceTree = "<group>"; };
+		22C127321E33B20700033116 /* TOTabBarItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOTabBarItemView.h; sourceTree = "<group>"; };
+		22C127331E33B20700033116 /* TOTabBarItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOTabBarItemView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,6 @@
 				2250A7791E3318CE00B8773C /* TOTabBarController */,
 				2250A7541E33165000B8773C /* TOTabBarControllerExample */,
 				2250A7531E33165000B8773C /* Products */,
-				22C1272F1E3351BA00033116 /* RevealServer.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +96,8 @@
 				2250A77B1E3318E300B8773C /* TOTabBarController.m */,
 				2250A77D1E331A2500B8773C /* TOTabBar.h */,
 				2250A77E1E331A2500B8773C /* TOTabBar.m */,
+				22C127321E33B20700033116 /* TOTabBarItemView.h */,
+				22C127331E33B20700033116 /* TOTabBarItemView.m */,
 			);
 			path = TOTabBarController;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			files = (
 				2250A77F1E331A2500B8773C /* TOTabBar.m in Sources */,
 				2250A77C1E3318E300B8773C /* TOTabBarController.m in Sources */,
+				22C127341E33B20700033116 /* TOTabBarItemView.m in Sources */,
 				2250A7851E33212C00B8773C /* TOTabViewController.m in Sources */,
 				2250A7781E3318BA00B8773C /* main.m in Sources */,
 				2250A7741E3318BA00B8773C /* AppDelegate.m in Sources */,
