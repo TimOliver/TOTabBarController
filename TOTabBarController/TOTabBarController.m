@@ -53,8 +53,8 @@
 
 - (void)setUp
 {
-    _horizontalTabBarHeight = 54.0f;
-    _verticalTabBarWidth = 94.0f;
+    _horizontalTabBarHeight = 50.0f;
+    _verticalTabBarWidth = 86.0f;
 }
 
 #pragma mark - View Creation -
@@ -148,8 +148,9 @@
         rect.size.width = self.view.frame.size.width;
         rect.size.height = [UIApplication sharedApplication].statusBarFrame.size.height;
     }
-    
     self.navigationBar.frame = rect;
+    
+    self.tabBar.verticalInset = rect.size.height;
 }
 
 #pragma mark - View Controller Transition -
@@ -198,8 +199,16 @@
         return;
     }
     
+    // Attach the first view controller to the screen
     _viewControllers = [viewControllers copy];
     [self transitionToViewControllerForIndex:0];
+    
+    //Collect the tab bar items and forward them to the tab bar
+    NSMutableArray *tabBarItems = [NSMutableArray array];
+    for (UIViewController *controller in _viewControllers) {
+        [tabBarItems addObject:controller.tabBarItem];
+    }
+    self.tabBar.tabBarItems = [NSArray arrayWithArray:tabBarItems];
 }
 
 - (void)setVisibleViewController:(UIViewController *)visibleViewController

@@ -25,6 +25,7 @@
     self.window = [[UIWindow alloc] init];
     
     self.tabBarController = [[TOTabBarController alloc] init];
+    self.tabBarController.tabBarIsAlwaysHorizontal = YES;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
@@ -41,8 +42,6 @@
     TOTabViewController *firstController = [[TOTabViewController alloc] initWithIndex:1];
     UINavigationController *firstNavController = [[UINavigationController alloc] initWithRootViewController:firstController];
     [controllers addObject:firstNavController];
-    
-    [firstNavController pushViewController:[UIViewController new] animated:NO];
     
     // Second
     TOTabViewController *secondController = [[TOTabViewController alloc] initWithIndex:2];

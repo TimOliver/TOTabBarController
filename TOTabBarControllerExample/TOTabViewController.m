@@ -22,6 +22,7 @@
     if (self = [super init]) {
         self.tabBarItem.title = [NSString stringWithFormat:@"VC %ld", (long)index];
         self.index = index;
+        self.title = [NSString stringWithFormat:@"View Controller %ld", (long)index];
     }
     
     return self;

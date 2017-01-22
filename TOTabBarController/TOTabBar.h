@@ -12,12 +12,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TOTabBar : UIView
 
-@property (nonatomic, assign) UIBarStyle barStyle;
-@property (nonatomic, assign) BOOL translucent; // Only applies when the bar is horizontal
-
+/* Items to display */
 @property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
-@property (nonatomic, assign) NSInteger selectedIndex;
 
+/* Styling */
+@property (nonatomic, assign) UIBarStyle barStyle;
+@property (nonatomic, assign) BOOL translucent;         // Only applies when the bar is horizontal
+
+/* Vertical Mode Styling */
+@property (nonatomic, assign) CGFloat verticalInset;    // For translucent navigation bars
+@property (nonatomic, assign) CGFloat verticalPadding;  // For the top and bottom padding
+@property (nonatomic, assign) CGFloat verticalItemSpacing; // Between items
+
+/* Horizontal Styling */
+@property (nonatomic, assign) CGFloat horizontalPadding; //For the left and right insets
+@property (nonatomic, assign) CGFloat horizontalItemSpacing; // When in regular size classes
+
+@property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) UIColor *separatorColor;
 
 @property (nonatomic, strong, nullable) void (^itemTappedHandler)(NSInteger index, UITabBarItem *item);

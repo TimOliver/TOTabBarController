@@ -10,7 +10,6 @@
 		2250A7741E3318BA00B8773C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A76D1E3318BA00B8773C /* AppDelegate.m */; };
 		2250A7751E3318BA00B8773C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2250A76E1E3318BA00B8773C /* Assets.xcassets */; };
 		2250A7761E3318BA00B8773C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2250A7701E3318BA00B8773C /* LaunchScreen.storyboard */; };
-		2250A7771E3318BA00B8773C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2250A7721E3318BA00B8773C /* Info.plist */; };
 		2250A7781E3318BA00B8773C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A7731E3318BA00B8773C /* main.m */; };
 		2250A77C1E3318E300B8773C /* TOTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A77B1E3318E300B8773C /* TOTabBarController.m */; };
 		2250A77F1E331A2500B8773C /* TOTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2250A77E1E331A2500B8773C /* TOTabBar.m */; };
@@ -164,7 +163,6 @@
 			files = (
 				2250A7751E3318BA00B8773C /* Assets.xcassets in Resources */,
 				2250A7761E3318BA00B8773C /* LaunchScreen.storyboard in Resources */,
-				2250A7771E3318BA00B8773C /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
