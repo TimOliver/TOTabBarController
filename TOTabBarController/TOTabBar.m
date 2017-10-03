@@ -19,6 +19,8 @@
 @property (nonatomic, readonly) BOOL isVertical;
 @property (nonatomic, readonly) BOOL shouldBeTranslucent;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
+
 @property (nonatomic, strong) UIImage *defaultItemImage;
 
 @end
@@ -42,11 +44,16 @@
     [self addSubview:self.separatorView];
     
     _translucent = YES;
-    _verticalPadding = 30.0f;
+    _verticalPadding = 27.0f;
     _verticalItemSpacing = 40.0f;
     
     _horizontalPadding = 25.0f;
     _horizontalItemSpacing = 70.0f;
+    
+    _defaultTintColor = [UIColor colorWithWhite:0.6f alpha:1.0f];
+    
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(barTapped:)];
+    [self addGestureRecognizer:_tapRecognizer];
 }
 
 - (void)layoutSubviews
@@ -97,7 +104,7 @@
         
         if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact) {
             totalWidth = self.frame.size.width - (self.horizontalPadding * 2.0f);
-            itemSpacing = totalWidth / totalItemWidth;
+            itemSpacing = (totalWidth - totalItemWidth) / (self.itemViews.count - 1);
             x = self.horizontalPadding;
         }
         else {
@@ -113,6 +120,41 @@
             itemView.frame = frame;
             
             x += frame.size.width + itemSpacing;
+        }
+    }
+}
+
+#pragma mark - Callbacks -
+- (void)barTapped:(UITapGestureRecognizer *)recognizer
+{
+    CGPoint point = [recognizer locationInView:self];
+    
+    // Work out a square size around each item
+    CGFloat minSize = MIN(self.bounds.size.width, self.bounds.size.height);
+    CGSize tapRegion = (CGSize){minSize, minSize};
+    
+    // Loop through each item, expand the frame around it to a reasonable
+    // tap space, and then check the tap point is inside it
+    for (NSInteger i = 0; i < self.itemViews.count; i++) {
+        TOTabBarItemView *itemView = self.itemViews[i];
+        CGRect frame = itemView.frame;
+        
+        if (self.isVertical) {
+            frame.origin.x = 0.0f;
+            frame.size.width = tapRegion.width;
+            frame.origin.y = CGRectGetMidY(frame) - 25.0f;
+            frame.size.height = 50.0f;
+        }
+        else {
+            frame.origin.y = 0.0f;
+            frame.size.height = tapRegion.height;
+            frame.origin.x = CGRectGetMidX(frame) - 25.0f;
+            frame.size.width = 50.0f;
+        }
+        
+        if (CGRectContainsPoint(frame, point)) {
+            self.selectedIndex = i;
+            break;
         }
     }
 }
@@ -139,12 +181,16 @@
     NSMutableArray *itemViews = [NSMutableArray arrayWithCapacity:_tabBarItems.count];
     for (UITabBarItem *item in _tabBarItems) {
         TOTabBarItemView *view = [[TOTabBarItemView alloc] initWithTabBarItem:item];
+        view.tintColor = self.defaultTintColor;
         if (item.image == nil) {
             view.image = self.defaultItemImage;
         }
         [itemViews addObject:view];
         [self addSubview:view];
     }
+    
+    //set the initial item as selected
+    [itemViews.firstObject setTintColor:self.selectedTintColor];
     
     self.itemViews = [NSArray arrayWithArray:itemViews];
     [self setNeedsLayout];
@@ -158,6 +204,24 @@
 - (BOOL)shouldBeTranslucent
 {
     return self.translucent && !self.isVertical;
+}
+
+- (void)setSelectedIndex:(NSInteger)selectedIndex
+{
+    if (_selectedIndex == selectedIndex) {
+        return;
+    }
+    
+    _selectedIndex = selectedIndex;
+    
+    for (TOTabBarItemView *itemView in self.itemViews) {
+        itemView.tintColor = self.defaultTintColor;
+    }
+    self.itemViews[_selectedIndex].tintColor = self.selectedTintColor;
+    
+    if (self.itemTappedHandler) {
+        self.itemTappedHandler(_selectedIndex, self.tabBarItems[_selectedIndex]);
+    }
 }
 
 - (UIImage *)defaultItemImage

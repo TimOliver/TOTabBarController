@@ -21,11 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     self.window = [[UIWindow alloc] init];
     
     self.tabBarController = [[TOTabBarController alloc] init];
-    self.tabBarController.tabBarIsAlwaysHorizontal = YES;
+    self.tabBarController.tabBarButton = [self tabBarButton];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
@@ -64,6 +63,14 @@
     [controllers addObject:fifthNavController];
     
     self.tabBarController.viewControllers = [NSArray arrayWithArray:controllers];
+}
+
+- (UIButton *)tabBarButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 40, 40);
+    button.backgroundColor = [UIColor redColor];
+    return button;
 }
 
 @end

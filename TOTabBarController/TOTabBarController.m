@@ -14,7 +14,6 @@
 @property (nonatomic, readonly) BOOL tabBarIsHorizontal;
 
 @property (nonatomic, strong, readwrite) TOTabBar *tabBar;
-@property (nonatomic, strong, readwrite) UIButton *tabBarButton;
 
 @property (nonatomic, strong) UINavigationBar *navigationBar;
 @property (nonatomic, weak) UINavigationController *childNavigationController;
@@ -65,7 +64,7 @@
     __weak typeof(self) weakSelf = self;
     
     // View Configuration
-    self.view.backgroundColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithWhite:1.0f alpha:1.0f];
     
     // Tab Bar Configuration
     self.tabBar = [[TOTabBar alloc] initWithFrame:CGRectZero];
@@ -189,7 +188,7 @@
 #pragma mark - Button Callbacks -
 - (void)tabBarTappedAtIndex:(NSInteger)index forItem:(UITabBarItem *)item
 {
-   
+    self.selectedIndex = index;
 }
 
 #pragma mark - Accessors -
@@ -234,6 +233,16 @@
     }
     
     [self transitionToViewControllerForIndex:_selectedIndex];
+}
+
+- (void)setTabBarButton:(UIButton *)tabBarButton
+{
+    self.tabBar.button = tabBarButton;
+}
+
+- (UIButton *)tabBarButton
+{
+    return self.tabBar.button;
 }
 
 #pragma mark - Accessors -

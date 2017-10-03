@@ -20,11 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 /* The tab bar that controls transitioning between view controllers */
 @property (nonatomic, readonly) TOTabBar *tabBar;
 
-/* Chooses whether to explicitly show the tab bar button. (Default is YES) */
-@property (nonatomic, assign) BOOL tabBarButtonHidden;
-
 /* A main call-to-action button placed in the tab bar that allows specific actions */
-@property (nonatomic, readonly) UIButton *tabBarButton;
+@property (nonatomic, strong) UIButton *tabBarButton;
 
 /* When the bar is horizontal, the vertical padding the button has from the bottom */
 @property (nonatomic, assign) CGFloat horizontalBarButtonOffset;
